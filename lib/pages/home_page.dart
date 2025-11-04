@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/custom_button.dart';
 import 'quiz_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,7 +36,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 30),
-            ElevatedButton(
+            CustomButton(
+              text: "Mulai Kuis",
               onPressed: () {
                 if (_nameController.text.isNotEmpty) {
                   Navigator.push(
@@ -51,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 }
               },
-              child: const Text("Mulai Kuis"),
+              color: Colors.indigo,
             ),
           ],
         ),
