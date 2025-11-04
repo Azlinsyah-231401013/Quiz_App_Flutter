@@ -15,7 +15,7 @@ class QuizApp extends StatelessWidget {
       title: 'Quiz App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'Poppins', // nanti kita ganti di tahap 3
+        fontFamily: 'Poppins', // gunakan font custom
       ),
       home: const HomePage(),
     );
