@@ -14,8 +14,18 @@ class QuizApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Quiz App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Poppins', // gunakan font custom
+        scaffoldBackgroundColor: const Color(0xFFEAF2FF), // biru lembut
+        primaryColor: const Color(0xFF3B5BDB),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(color: Color(0xFF1C1C1C)),
+        ),
+        fontFamily: 'Poppins',
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF3B5BDB),
+          primary: const Color(0xFF3B5BDB),
+          secondary: const Color(0xFF4F4F4F),
+          brightness: Brightness.light,
+        ),
       ),
       home: const HomePage(),
     );

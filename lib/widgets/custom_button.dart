@@ -18,16 +18,21 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: color ?? Colors.blue,
+          backgroundColor: color ?? const Color(0xFF3B5BDB), // biru tua elegan
           padding: const EdgeInsets.symmetric(vertical: 15),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
+          elevation: 4,
         ),
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(fontSize: 18, color: Colors.white),
+          style: const TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     );

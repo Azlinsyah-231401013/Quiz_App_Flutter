@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../data/questions.dart';
+import '../widgets/quiz_card.dart';
+import 'result_page.dart';
 
 class QuizPage extends StatefulWidget {
   final String username;
@@ -9,31 +12,46 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int _currentQuestion = 1;
+  int currentIndex = 0;
+  int score = 0;
+
+  void checkAnswer(String selectedAnswer) {
+    final currentQuestion = questions[currentIndex];
+    if (selectedAnswer == currentQuestion.correctAnswer) {
+      score++;
+    }
+
+    if (currentIndex < questions.length - 1) {
+      setState(() {
+        currentIndex++;
+      });
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ResultPage(
+            username: widget.username,
+            score: score,
+            total: questions.length,
+          ),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final question = questions[currentIndex];
+
     return Scaffold(
-      appBar: AppBar(title: Text("Hai, ${widget.username}!")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Pertanyaan $_currentQuestion",
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _currentQuestion++;
-                });
-              },
-              child: const Text("Soal berikutnya"),
-            ),
-          ],
-        ),
+      appBar: AppBar(
+        title: Text("Hai, ${widget.username}!"),
+        centerTitle: true,
+      ),
+      body: QuizCard(
+        question: question.questionText,
+        options: question.options,
+        onSelected: checkAnswer,
       ),
     );
   }

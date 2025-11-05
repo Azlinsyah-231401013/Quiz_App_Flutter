@@ -1,70 +1,17 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_button.dart';
-import 'quiz_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final TextEditingController _nameController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Quiz App"),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 25),
-            const Text(
-              "Masukkan Nama Kamu",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                hintText: "Nama lengkap",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
-            CustomButton(
-              text: "Mulai Kuis",
-              onPressed: () {
-                if (_nameController.text.isNotEmpty) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          QuizPage(username: _nameController.text),
-                    ),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Nama belum diisi!")),
-                  );
-                }
-              },
-              color: Colors.indigo,
-            ),
-          ],
-        ),
-      ),
+      appBar: AppBar(title: const Text("Quiz Ulun")),
+      body: const Center(child: Text("Home")),
     );
   }
 }
